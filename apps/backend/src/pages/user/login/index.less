@@ -1,0 +1,104 @@
+.code {
+  width: 115px;
+  height: 42px;
+}
+
+.loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  // background-color: #e1f5fe;
+  // background-image: url('https://img.freepik.com/free-photo/modern-office-buildings-low-angle-view_23-2148821594.jpg');
+  background-image: url('../../../assents/bg.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.loginBox {
+  display: flex;
+  width: 850px;
+  height: 530px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.leftPanel {
+  flex: 1;
+  background-color: #8ac9ca;
+  padding: 40px;
+  color: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-image: url('../../../assents/bgl.png');
+    background-size: cover;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .subTitle {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  .mainTitle {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 10px;
+    width: fit-content;
+  }
+
+  .footTitle {
+    font-size: 12px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+.rightPanel {
+  flex: 1;
+  padding: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: white;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+
+  :global {
+
+    .ant-input-affix-wrapper,
+    .ant-input-password {
+      border: none !important;
+      border-bottom: 1px solid #78c2c4 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      padding-left: 0 !important;
+      background: transparent !important;
+      margin-bottom: 10px;
+
+      .ant-input {
+        background: transparent !important;
+      }
+    }
+
+    .ant-btn-primary {
+      background-color: #2b9fa3 !important;
+      height: 40px;
+      border-radius: 4px;
+      margin-top: 20px;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "quality-control",
+  "description": "质控",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "dev:screen": "turbo run dev --filter=screen",
+    "dev:bk": "turbo run dev --filter=backend",
+    "dev:db": "turbo run dev --filter=database",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "check-types": "turbo run check-types"
+  },
+  "devDependencies": {
+    "prettier": "^3.7.4",
+    "turbo": "^2.9.5",
+    "typescript": "5.9.2"
+  },
+  "packageManager": "pnpm@10.10.0",
+  "engines": {
+    "node": ">=18"
+  }
+}

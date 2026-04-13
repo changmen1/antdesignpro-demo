@@ -1,0 +1,121 @@
+import { downLoadXlsx } from '@/utils/downloadfile';
+import { request } from '@umijs/max';
+import { API } from 'types';
+
+
+// 查询角色信息列表
+export async function getRoleList(params?: Role.RoleListParams) {
+  return request<Role.RolePageResult>('/system/role/list', {
+    method: 'GET',
+    params
+  });
+}
+
+// 查询角色信息详细
+export function getRole(roleId: number) {
+  return request<Role.RoleInfoResult>(`/system/role/${roleId}`, {
+    method: 'GET'
+  });
+}
+
+// 新增角色信息
+export async function addRole(params: Role.Role) {
+  return request<API.Result<unknown>>('/system/role', {
+    method: 'POST',
+    data: params
+  });
+}
+
+// 修改角色信息
+export async function updateRole(params: Role.Role) {
+  return request<API.Result<unknown>>('/system/role', {
+    method: 'PUT',
+    data: params
+  });
+}
+
+// 删除角色信息
+export async function removeRole(ids: string) {
+  return request<API.Result<unknown>>(`/system/role/${ids}`, {
+    method: 'DELETE'
+  });
+}
+
+// 导出角色信息
+export function exportRole(params?: Role.RoleListParams) {
+  return downLoadXlsx(`/system/role/export`, { params }, `role_${new Date().getTime()}.xlsx`);
+}
+
+// 获取角色菜单列表
+export function getRoleMenuList(id: number) {
+  return request<Role.RoleMenuResult>(`/system/menu/roleMenuTreeselect/${id}`, {
+    method: 'get',
+  });
+}
+
+// 角色数据权限
+export function updateRoleDataScope(data: Record<string, any>) {
+  return request('/system/role/dataScope', {
+    method: 'put',
+    data
+  })
+}
+
+// 角色状态修改
+export function changeRoleStatus(roleId: number, status: string) {
+  const data = {
+    roleId,
+    status
+  }
+  return request<API.Result<unknown>>('/system/role/changeStatus', {
+    method: 'put',
+    data: data
+  })
+}
+
+// 查询角色已授权用户列表
+export function allocatedUserList(params?: Role.RoleListParams) {
+  return request('/system/role/authUser/allocatedList', {
+    method: 'get',
+    params
+  })
+}
+
+// 查询角色未授权用户列表
+export function unallocatedUserList(params?: Role.RoleListParams) {
+  return request('/system/role/authUser/unallocatedList', {
+    method: 'get',
+    params
+  })
+}
+
+// 取消用户授权角色
+export function authUserCancel(data: any) {
+  return request<API.Result<unknown>>('/system/role/authUser/cancel', {
+    method: 'put',
+    data: data
+  })
+}
+
+// 批量取消用户授权角色
+export function authUserCancelAll(data: any) {
+  return request<API.Result<unknown>>('/system/role/authUser/cancelAll', {
+    method: 'put',
+    params: data
+  })
+}
+
+// 授权用户选择
+export function authUserSelectAll(data: Record<string, any>) {
+  return request<API.Result<unknown>>('/system/role/authUser/selectAll', {
+    method: 'put',
+    params: data,
+  })
+}
+
+// 根据角色ID查询部门树结构
+export function getDeptTreeSelect(roleId: number) {
+  return request('/system/role/deptTree/' + roleId, {
+    method: 'get'
+  })
+}
