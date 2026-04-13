@@ -22,6 +22,7 @@ interface ResponseStructure {
 }
 
 const encryptHeader = "encrypt-key";
+const ngrok = "ngrok-skip-browser-warning"
 
 /**
  * @name 错误处理
@@ -121,6 +122,7 @@ export const errorConfig: RequestConfig = {
       config.headers = {
         ...config.headers,
         clientid: "e5cd7e4891bf95d1d19206ce24a7b32e",
+        [ngrok]: true,
         Authorization: sessionToken ? `Bearer ${sessionToken}` : "",
       };
 
